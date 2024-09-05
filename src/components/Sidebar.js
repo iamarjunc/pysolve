@@ -43,6 +43,15 @@ const Sidebar = () => {
       <div className={`box ${activePath === '/pythonlists' ? 'active' : ''}`}>
         <Link to="/pythonlists" onClick={() => handleLinkClick('/pythonlists')}>List</Link>
       </div>
+      <div className={`box ${activePath === '/pythontuple' ? 'active' : ''}`}>
+        <Link to="/pythontuple" onClick={() => handleLinkClick('/pythontuple')}>Tuple</Link>
+      </div>
+      <div className={`box ${activePath === '/pythonset' ? 'active' : ''}`}>
+        <Link to="/pythonset" onClick={() => handleLinkClick('/pythonset')}>Set</Link>
+      </div>
+      <div className={`box ${activePath === '/pythondict' ? 'active' : ''}`}>
+        <Link to="/pythondict" onClick={() => handleLinkClick('/pythondict')}>Dictionary</Link>
+      </div>
     </div>
   );
 };
