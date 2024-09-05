@@ -1,0 +1,197 @@
+.navbar {
+  position: fixed; /* Fixes the navbar to the top of the viewport */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  z-index: 2000; /* Ensure it stays on top */
+  background-color: #007bff; /* Background color for better visibility */
+  font-family: 'Montserrat', sans-serif; /* Font for navbar */
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 56px; /* Adjust this value to match the height of your navbar */
+  left: 0;
+  height: calc(100% - 56px); /* Adjust height to fill remaining space below navbar */
+  width: 250px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  padding: 15px;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+  z-index: 1000; /* Ensure it appears above the content */
+  overflow: auto; /* Ensure sidebar content is scrollable if needed */
+  font-family: 'Roboto', sans-serif; /* Font for sidebar */
+}
+.sidebar .box.active {
+  background-color: #052241;
+  color: #fff;
+  border-color: #052241;
+}
+a {
+  color: #0c437c;
+  text-decoration: none;
+  background-color: transparent;
+}
+.sidebar .box.active a {
+  color: #fff; /* Active link color */
+  text-decoration: none;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #09315b;
+  border-color: #007bff;
+}
+.sidebar h4 {
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 500;
+}
+
+.sidebar .box {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  font-weight: 400;
+}
+
+.sidebar .box.active {
+  background-color: #09315b;
+  color: #fff;
+  border-color: #052241;
+}
+.bg-primary {
+  background-color: #09315b !important;
+}
+.sidebar .box a:hover {
+  text-decoration: underline;
+}
+
+/* Content Styles */
+.content {
+  margin-left: 250px; /* Space for the sidebar */
+  margin-top: 56px; /* Space for the fixed navbar */
+  padding: 15px; /* Optional: Add some padding */
+  position: relative;
+  z-index: 1; /* Ensure content is below the sidebar */
+  font-family: 'Roboto', sans-serif; /* Font for content */
+}
+
+/* Custom Button Styles */
+.btn-custom {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-custom:hover {
+  background: linear-gradient(90deg, #0056b3, #003d7a);
+  transform: translateY(-2px);
+}
+
+.btn-custom:active {
+  transform: translateY(1px);
+}
+.text-primary {
+  color: #013266 !important;
+}
+/* Code Block Styling */
+pre {
+
+  background-color: #052241;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Courier New', Courier, monospace;
+}
+pre code {
+  font-size: inherit;
+  color: WHITE;
+  word-break: normal;
+}
+
+code {
+  font-size: 16px;
+}
+
+/* Copy Button Styling */
+button.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #117829;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.copy-btn:hover {
+  background-color: #218838;
+}
+
+button.copy-btn:active {
+  transform: scale(0.98);
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #777;
+  font-family: 'Roboto', sans-serif; /* Font for footer */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767.98px) {
+  .navbar {
+      position: static; /* Remove fixed positioning */
+  }
+
+  .sidebar {
+      position: static;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      box-shadow: none;
+  }
+
+  .content {
+      margin-left: 0; /* Remove left margin */
+      padding: 15px;
+  }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .sidebar {
+      width: 200px; /* Adjust sidebar width */
+      padding: 10px;
+  }
+
+  .content {
+      margin-left: 200px; /* Adjust content margin */
+  }
+}
