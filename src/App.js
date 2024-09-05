@@ -13,6 +13,7 @@ import Boolean from './contents/boolean';
 import Operators from './contents/operators';
 import ConditionalStatements from './contents/conditionstatement';
 import Loops from './contents/loop';
+import PythonLists from './contents/list';
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/operators" element={<Operators />} />
             <Route path="/conditionstatement" element={<ConditionalStatements />} />
             <Route path="/loop" element={<Loops />} />
+            <Route path="/pythonlists" element={<PythonLists />} />
           </Routes>
           <Footer/>
         </div>

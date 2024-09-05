@@ -40,6 +40,9 @@ const Sidebar = () => {
       <div className={`box ${activePath === '/loop' ? 'active' : ''}`}>
         <Link to="/loop" onClick={() => handleLinkClick('/loop')}>Loops</Link>
       </div>
+      <div className={`box ${activePath === '/pythonlists' ? 'active' : ''}`}>
+        <Link to="/pythonlists" onClick={() => handleLinkClick('/pythonlists')}>List</Link>
+      </div>
     </div>
   );
 };
