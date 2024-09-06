@@ -44,9 +44,9 @@ const App = () => {
   return (
     <div className="App">
       {/* Render Navbar only if not on the home page */}
-      {location.pathname !== '/home' && <Navbar />}
+      {location.pathname !== '/' && <Navbar />}
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
 
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/variables" element={<Variables />} />

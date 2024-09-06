@@ -161,7 +161,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="/home">PySolve</a>
+        <a className="navbar-brand" href="/">PySolve</a>
         <button
           className="navbar-toggler"
           type="button"
