@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pysolve/static/css/main.fc19299b.css",
-    "main.js": "/pysolve/static/js/main.846ec856.js",
-    "static/js/453.813a655a.chunk.js": "/pysolve/static/js/453.813a655a.chunk.js",
-    "index.html": "/pysolve/index.html",
-    "main.fc19299b.css.map": "/pysolve/static/css/main.fc19299b.css.map",
-    "main.846ec856.js.map": "/pysolve/static/js/main.846ec856.js.map",
-    "453.813a655a.chunk.js.map": "/pysolve/static/js/453.813a655a.chunk.js.map"
+    "main.css": "/introduction/static/css/main.fc19299b.css",
+    "main.js": "/introduction/static/js/main.61a597b3.js",
+    "static/js/453.813a655a.chunk.js": "/introduction/static/js/453.813a655a.chunk.js",
+    "index.html": "/introduction/index.html",
+    "main.fc19299b.css.map": "/introduction/static/css/main.fc19299b.css.map",
+    "main.61a597b3.js.map": "/introduction/static/js/main.61a597b3.js.map",
+    "453.813a655a.chunk.js.map": "/introduction/static/js/453.813a655a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fc19299b.css",
-    "static/js/main.846ec856.js"
+    "static/js/main.61a597b3.js"
   ]
 }
