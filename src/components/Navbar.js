@@ -139,6 +139,20 @@ const Navbar = () => {
           {/* Add more Django links here */}
         </>
       );
+    } else if (activeNav === 'ml') {
+      return (
+        <>
+          <h4>ML Topics</h4>
+          {/* Django sidebar links */}
+          <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
+            <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
+          </div>
+          <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
+            <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
+          </div>
+          {/* Add more Django links here */}
+        </>
+      );
     }
     // Add more conditions for other nav items if needed
     return null;
@@ -147,7 +161,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">PySolve</a>
+        <a className="navbar-brand" href="/home">PySolve</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -188,7 +202,9 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Machine Learning</a>
+              <a className={`nav-link ${activeNav === 'ml' ? 'active' : ''}`}
+              href="/ml"
+              onClick={() => setActiveNav('ml')}>Machine Learning</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Contact</a>

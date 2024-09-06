@@ -1,7 +1,7 @@
-// App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import HomePage from './components/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Introduction from './contents/introduction';
@@ -38,49 +38,57 @@ import DjangoGetStarted from './django/DjangoGetStarted';
 
 import './App.css'
 
-function App() {
+const App = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <div className="App">
-        <Navbar/>
-          <Routes>
-            <Route path="/introduction" element={<Introduction />} />
-            <Route path="/variables" element={<Variables />} />
-            <Route path="/data-types" element={<Datatype />} />
-            <Route path="/type-casting" element={<Typecasting />} />
-            <Route path="/strings" element={<Strings />} />
-            <Route path="/boolean" element={<Boolean />} />
-            <Route path="/operators" element={<Operators />} />
-            <Route path="/conditionstatement" element={<ConditionalStatements />} />
-            <Route path="/loop" element={<Loops />} />
-            <Route path="/pythonlists" element={<PythonLists />} />
-            <Route path="/pythontuples" element={<PythonTuples />} />
-            <Route path="/pythonsets" element={<PythonSets />} />
-            <Route path="/pythondictionaries" element={<PythonDictionaries />} />
-            <Route path="/functions" element={<PythonFunctions />} />
-            <Route path="/classes" element={<PythonClasses />} />
-            <Route path="/inheritance" element={<PythonInheritance />} />
-            <Route path="/polymorphism" element={<PythonPolymorphism />} />
-            <Route path="/scopes" element={<PythonScopes />} />
-            <Route path="/modules" element={<PythonModules />} />
-            <Route path="/exceptions" element={<PythonExceptions />} />
-            <Route path="/file-handling" element={<PythonFileHandling />} />
-            <Route path="/json" element={<PythonJSONHandling />} />
-            <Route path="/regular-expressions" element={<PythonRegexHandling />} />
-            <Route path="/generators" element={<PythonGeneratorsHandling />} />
-            <Route path="/decorators" element={<PythonDecoratorsHandling />} />
-            <Route path="/lambda-functions" element={<PythonLambdaHandling />} />
-            <Route path="/iterators" element={<PythonIteratorsHandling />} />
-            <Route path="/context-managers" element={<PythonContextManagersHandling />} />
-            
-            
-            <Route path="/django-intro" element={<DjangoOverview />} />
-            <Route path="/django-getstartred" element={<DjangoGetStarted />} />
-          </Routes>
-          <Footer/>
-        </div>
-    </Router>
+    <div className="App">
+      {/* Render Navbar only if not on the home page */}
+      {location.pathname !== '/home' && <Navbar />}
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+
+        <Route path="/introduction" element={<Introduction />} />
+        <Route path="/variables" element={<Variables />} />
+        <Route path="/data-types" element={<Datatype />} />
+        <Route path="/type-casting" element={<Typecasting />} />
+        <Route path="/strings" element={<Strings />} />
+        <Route path="/boolean" element={<Boolean />} />
+        <Route path="/operators" element={<Operators />} />
+        <Route path="/conditionstatement" element={<ConditionalStatements />} />
+        <Route path="/loop" element={<Loops />} />
+        <Route path="/pythonlists" element={<PythonLists />} />
+        <Route path="/pythontuples" element={<PythonTuples />} />
+        <Route path="/pythonsets" element={<PythonSets />} />
+        <Route path="/pythondictionaries" element={<PythonDictionaries />} />
+        <Route path="/functions" element={<PythonFunctions />} />
+        <Route path="/classes" element={<PythonClasses />} />
+        <Route path="/inheritance" element={<PythonInheritance />} />
+        <Route path="/polymorphism" element={<PythonPolymorphism />} />
+        <Route path="/scopes" element={<PythonScopes />} />
+        <Route path="/modules" element={<PythonModules />} />
+        <Route path="/exceptions" element={<PythonExceptions />} />
+        <Route path="/file-handling" element={<PythonFileHandling />} />
+        <Route path="/json" element={<PythonJSONHandling />} />
+        <Route path="/regular-expressions" element={<PythonRegexHandling />} />
+        <Route path="/generators" element={<PythonGeneratorsHandling />} />
+        <Route path="/decorators" element={<PythonDecoratorsHandling />} />
+        <Route path="/lambda-functions" element={<PythonLambdaHandling />} />
+        <Route path="/iterators" element={<PythonIteratorsHandling />} />
+        <Route path="/context-managers" element={<PythonContextManagersHandling />} />
+
+        <Route path="/django-intro" element={<DjangoOverview />} />
+        <Route path="/django-getstartred" element={<DjangoGetStarted />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;
