@@ -86,7 +86,7 @@ const App = () => {
 }
 
 const AppWrapper = () => (
-  <Router basename="/">
+  <Router basename="/pysolve">
     <App />
   </Router>
 );
