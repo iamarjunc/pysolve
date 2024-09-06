@@ -161,7 +161,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="/">PySolve</a>
+        <a className="navbar-brand" href="/pysolve">PySolve</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -186,7 +186,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 className={`nav-link ${activeNav === 'python' ? 'active' : ''}`}
-                href="/introduction"
+                href="/pysolve/introduction"
                 onClick={() => setActiveNav('python')}
               >
                 Python
@@ -195,7 +195,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 className={`nav-link ${activeNav === 'django' ? 'active' : ''}`}
-                href="/django-intro"
+                href="/pysolve/django-intro"
                 onClick={() => setActiveNav('django')}
               >
                 Django
@@ -203,7 +203,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <a className={`nav-link ${activeNav === 'ml' ? 'active' : ''}`}
-              href="/ml"
+              href="/pysolve/ml"
               onClick={() => setActiveNav('ml')}>Machine Learning</a>
             </li>
             <li className="nav-item">
