@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const PythonLists = () => {
     // Function to handle code copy
     const copyCode = (btn) => {
@@ -157,6 +157,16 @@ print(new_fruits)  # Output: ['orange', 'blueberry', 'apple']`}
                         <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                     </pre>
                 </div>
+                
+                
+        <div className="d-flex justify-content-between">
+            <div className="mt-4">
+                <Link to="/loop" className="btn btn-primary">Previous Page: Loop</Link>
+            </div>
+            <div className="mt-4">
+                <Link to="/pythontuples" className="btn btn-primary">Next Page: Tuple</Link>
+            </div>
+        </div>
             </div>
         </div>
     );

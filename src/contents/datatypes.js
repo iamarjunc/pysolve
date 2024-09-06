@@ -131,6 +131,15 @@ const Datatype = () => {
                         <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                     </pre>
                 </div>
+                
+                <div className="d-flex justify-content-between">
+                    <div className="mt-4">
+                        <Link to="/variables" className="btn btn-primary">Previous Page: Variables</Link>
+                    </div>
+                    <div className="mt-4">
+                        <Link to="/type-casting" className="btn btn-primary">Next Page: Type Casting</Link>
+                    </div>
+                </div>
             </div>
         </div>
     );

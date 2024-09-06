@@ -29,7 +29,7 @@ const Introduction = () => {
             {/* Main Content */}
             <div className="content">
                 <div className="jumbotron jumbotron-fluid bg-light p-4 rounded">
-                    <h1 className="display-4 text-primary">Introduction to Python</h1>
+                    <h2 className="display-4 text-primary">Introduction to Python</h2>
                     <p className="lead">Python is a high-level, interpreted programming language known for its simplicity and readability. It's widely used in web development, data science, automation, and many other fields.</p>
                 </div>
                 <div className="mt-4">

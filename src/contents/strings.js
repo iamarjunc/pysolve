@@ -87,6 +87,15 @@ print(words)  # Output: ['Hello', 'World!']</code>
                 </li>
             </ul>
         </div>
+        
+        <div className="d-flex justify-content-between">
+            <div className="mt-4">
+                <Link to="/type-casting" className="btn btn-primary">Previous Page: Type Casting</Link>
+            </div>
+            <div className="mt-4">
+                <Link to="/boolean" className="btn btn-primary">Next Page: Boolean</Link>
+            </div>
+        </div>
     </div>
 
         </div>

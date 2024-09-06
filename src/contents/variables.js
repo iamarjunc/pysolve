@@ -113,6 +113,15 @@ height = 5.6</code>
                 <pre><code className="language-python"># Valid variable names<br/>first_name = "Alice"<br/>_last_name = "Smith"<br/>age2 = 30<br/># Invalid variable names<br/>2nd_place = "Winner"  # Starts with a number</code>
                     <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                 </pre>
+                <div className="d-flex justify-content-between">
+                    <div className="mt-4">
+                        <Link to="/introduction" className="btn btn-primary">Previous Page: Introduction</Link>
+                    </div>
+                    <div className="mt-4">
+                        <Link to="/data-types" className="btn btn-primary">Next Page: Datatypes</Link>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

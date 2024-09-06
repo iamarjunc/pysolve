@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Loops = () => {
     // Function to handle code copy
     const copyCode = (btn) => {
@@ -109,6 +109,15 @@ for key, value in person.items():
                         <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                     </pre>
                 </div>
+                
+        <div className="d-flex justify-content-between">
+            <div className="mt-4">
+                <Link to="/conditionstatement" className="btn btn-primary">Previous Page: Condition Statement</Link>
+            </div>
+            <div className="mt-4">
+                <Link to="/pythonlists" className="btn btn-primary">Next Page: List</Link>
+            </div>
+        </div>
             </div>
         </div>
     );

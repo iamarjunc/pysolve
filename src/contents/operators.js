@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Operators = () => {
     // Function to handle code copy
     const copyCode = (btn) => {
@@ -127,6 +127,15 @@ const Operators = () => {
                         <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                     </pre>
                 </div>
+                
+        <div className="d-flex justify-content-between">
+            <div className="mt-4">
+                <Link to="/boolean" className="btn btn-primary">Previous Page: Boolean</Link>
+            </div>
+            <div className="mt-4">
+                <Link to="/conditionstatement" className="btn btn-primary">Next Page: Condition Statement</Link>
+            </div>
+        </div>
             </div>
         </div>
     );

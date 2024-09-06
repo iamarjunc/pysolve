@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Typecasting = () => {
     // Function to handle code copy
     const copyCode = (btn) => {
@@ -80,7 +80,18 @@ const Typecasting = () => {
                         <code id="dict-convert-code">person = dict(name='Alice', age=25)  # Creates a dictionary with keys 'name' and 'age'</code>
                     </pre>
                 </div>
+                
+            <div className="d-flex justify-content-between">
+                    <div className="mt-4">
+                        <Link to="/data-types" className="btn btn-primary">Previous Page: Datatypes</Link>
+                    </div>
+                    <div className="mt-4">
+                        <Link to="/strings" className="btn btn-primary">Next Page: Strings</Link>
+                    </div>
+                </div>
+                
             </div>
+            
         </div>
     );
 };

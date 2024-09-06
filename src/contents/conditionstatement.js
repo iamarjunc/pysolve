@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const ConditionalStatements = () => {
     // Function to handle code copy
     const copyCode = (btn) => {
@@ -112,6 +112,15 @@ if x > 5 and y > 15:
                         <button className="copy-btn" onClick={(e) => copyCode(e.target)}>Copy</button>
                     </pre>
                 </div>
+                
+        <div className="d-flex justify-content-between">
+            <div className="mt-4">
+                <Link to="/operators" className="btn btn-primary">Previous Page: Operators</Link>
+            </div>
+            <div className="mt-4">
+                <Link to="/loop" className="btn btn-primary">Next Page: Loop</Link>
+            </div>
+        </div>
             </div>
         </div>
     );
