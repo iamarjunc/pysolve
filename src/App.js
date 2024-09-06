@@ -34,6 +34,8 @@ import PythonIteratorsHandling from './contents/iterators';
 import PythonContextManagersHandling from './contents/contextmanagers';
 
 import DjangoOverview from './django/DjangoOverview';
+import DjangoGetStarted from './django/DjangoGetStarted';
+
 import './App.css'
 
 function App() {
@@ -73,6 +75,7 @@ function App() {
             
             
             <Route path="/django-intro" element={<DjangoOverview />} />
+            <Route path="/django-getstartred" element={<DjangoGetStarted />} />
           </Routes>
           <Footer/>
         </div>

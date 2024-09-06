@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -7,12 +5,20 @@ const Navbar = () => {
   const location = useLocation(); // To get the current route
   const [activePath, setActivePath] = useState(location.pathname); // Set initial active path
   const [isSidebarVisible, setIsSidebarVisible] = useState(false); // State for sidebar visibility
-  const [activeNav, setActiveNav] = useState('python'); // State for active navigation item
+  const [activeNav, setActiveNav] = useState(() => {
+    // Retrieve the last selected nav from localStorage
+    return localStorage.getItem('activeNav') || 'python';
+  });
 
   // Update the active path when the route changes
   useEffect(() => {
     setActivePath(location.pathname);
   }, [location.pathname]);
+
+  // Update localStorage whenever activeNav changes
+  useEffect(() => {
+    localStorage.setItem('activeNav', activeNav);
+  }, [activeNav]);
 
   // Handle sidebar toggle
   const handleSidebarToggle = () => {
@@ -25,7 +31,6 @@ const Navbar = () => {
     setIsSidebarVisible(false); // Close sidebar after link click
     setActiveNav(nav); // Set active navigation
   };
-
   // Render sidebar content based on the active navigation item
   const renderSidebarContent = () => {
     if (activeNav === 'python') {
@@ -128,8 +133,8 @@ const Navbar = () => {
           <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
             <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
           </div>
-          <div className={`box ${activePath === '/django-middleware' ? 'active' : ''}`}>
-            <Link to="/django-middleware" onClick={() => handleLinkClick('/django-middleware', 'django')}>Middleware</Link>
+          <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
+            <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
           </div>
           {/* Add more Django links here */}
         </>
@@ -167,7 +172,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 className={`nav-link ${activeNav === 'python' ? 'active' : ''}`}
-                href="#"
+                href="/introduction"
                 onClick={() => setActiveNav('python')}
               >
                 Python
@@ -176,7 +181,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 className={`nav-link ${activeNav === 'django' ? 'active' : ''}`}
-                href="#"
+                href="/django-intro"
                 onClick={() => setActiveNav('django')}
               >
                 Django
