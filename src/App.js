@@ -48,7 +48,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/introduction" element={<Introduction />} />
+        <Route path="/pysolve/introduction" element={<Introduction />} />
         <Route path="/variables" element={<Variables />} />
         <Route path="/data-types" element={<Datatype />} />
         <Route path="/type-casting" element={<Typecasting />} />
