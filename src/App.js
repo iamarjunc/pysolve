@@ -78,7 +78,7 @@ const App = () => {
         <Route path="/context-managers" element={<PythonContextManagersHandling />} />
 
         <Route path="/django-intro" element={<DjangoOverview />} />
-        <Route path="/django-getstartred" element={<DjangoGetStarted />} />
+        <Route path="/django-getstarted" element={<DjangoGetStarted />} />
       </Routes>
       <Footer />
     </div>
