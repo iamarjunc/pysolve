@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pysolve/static/css/main.c896a20d.css",
-    "main.js": "/pysolve/static/js/main.caf3d1f8.js",
+    "main.js": "/pysolve/static/js/main.734dec47.js",
     "static/js/453.813a655a.chunk.js": "/pysolve/static/js/453.813a655a.chunk.js",
     "static/media/logo.png": "/pysolve/static/media/logo.694a03d1304e6e0d7aac.png",
     "index.html": "/pysolve/index.html",
     "main.c896a20d.css.map": "/pysolve/static/css/main.c896a20d.css.map",
-    "main.caf3d1f8.js.map": "/pysolve/static/js/main.caf3d1f8.js.map",
+    "main.734dec47.js.map": "/pysolve/static/js/main.734dec47.js.map",
     "453.813a655a.chunk.js.map": "/pysolve/static/js/453.813a655a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c896a20d.css",
-    "static/js/main.caf3d1f8.js"
+    "static/js/main.734dec47.js"
   ]
 }
