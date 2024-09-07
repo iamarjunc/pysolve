@@ -1,9 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './HomePage.css'; // Assuming you have a CSS file for styling
-import logo from '../images/logo.png'; 
+import logo from '../images/logo.png';
 
 const HomePage = () => {
+    // Clear localStorage and sessionStorage on component mount
+    useEffect(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+    }, []);
+
+    const location = useLocation();
+    const [activePath, setActivePath] = useState(location.pathname);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+    const [activeNav, setActiveNav] = useState(() => {
+        return sessionStorage.getItem('activeNav') || 'python';
+    });
+
+    const handleLinkClick = (path, nav) => {
+        console.log(path, nav);
+        setActivePath(path);  // Update active path
+        setActiveNav(nav);    // Set the active navigation item
+        sessionStorage.setItem('activeNav', nav); // Store activeNav in sessionStorage
+        sessionStorage.setItem('sideNav', path); // Store activeNav in sessionStorage
+        setIsSidebarVisible(false); // Close the sidebar if necessary
+    };
+    
     return (
         <div className="home-page">
             <div className="jumbotron jumbotron-fluid bg-light p-4 rounded text-center">
@@ -18,7 +40,10 @@ const HomePage = () => {
                             <div className="card-body">
                                 <h5 className="card-title text-primary">Python</h5>
                                 <p className="card-text text-dark">Explore Python programming from the ground up. Build robust applications and scripts with ease.</p>
-                                <Link to="/introduction" className="btn btn-primary">Explore Python</Link>
+                                <Link to="/introduction"
+                                    onClick={() => handleLinkClick('/introduction', 'python')}
+                                    className={`btn btn-success ${activePath === '/introduction' ? 'active' : ''}`}>
+                                    Explore Python</Link>
                             </div>
                         </div>
                     </div>
@@ -27,7 +52,11 @@ const HomePage = () => {
                             <div className="card-body">
                                 <h5 className="card-title text-success">Django</h5>
                                 <p className="card-text text-dark">Dive into Django for powerful web development. Create scalable and dynamic web applications effortlessly.</p>
-                                <Link to="/django-intro" className="btn btn-success">Explore Django</Link>
+                                <Link to="/django-intro"
+                                    onClick={() => handleLinkClick('/django-intro', 'django')}
+                                    className={`btn btn-success ${activePath === '/django-intro' ? 'active' : ''}`}>
+                                    Explore Django
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -2,48 +2,44 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const location = useLocation(); // To get the current route
-  const [activePath, setActivePath] = useState(location.pathname); // Set initial active path
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // State for sidebar visibility
+  const location = useLocation();
+  const [activePath, setActivePath] = useState('');
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [activeNav, setActiveNav] = useState(() => {
-    // Retrieve the last selected nav from localStorage
-    return localStorage.getItem('activeNav') || 'python';
+    return sessionStorage.getItem('activeNav') || 'python';
   });
 
-  // Update the active path when the route changes
   useEffect(() => {
-    setActivePath(location.pathname);
+    const storedActivePath = sessionStorage.getItem('activePath') || location.pathname;
+    setActivePath(storedActivePath);
   }, [location.pathname]);
 
-  // Update localStorage whenever activeNav changes
   useEffect(() => {
-    localStorage.setItem('activeNav', activeNav);
-  }, [activeNav]);
+    sessionStorage.setItem('activeNav', activeNav);
+    sessionStorage.setItem('activePath', activePath);
+  }, [activeNav, activePath]);
 
-  // Handle sidebar toggle
   const handleSidebarToggle = () => {
-    setIsSidebarVisible(!isSidebarVisible); // Toggle sidebar visibility
+    setIsSidebarVisible(!isSidebarVisible);
   };
 
-  // Handle active class toggle and close sidebar on link click
   const handleLinkClick = (path, nav) => {
     setActivePath(path);
-    setIsSidebarVisible(false); // Close sidebar after link click
-    setActiveNav(nav); // Set active navigation
+    setIsSidebarVisible(false);
+    setActiveNav(nav);
   };
-  // Render sidebar content based on the active navigation item
   const renderSidebarContent = () => {
-    if (activeNav === 'python') {
-      return (
-        <>
-          <h4>Python Topics</h4>
-          {/* Python sidebar links */}
-          <div className={`box ${activePath === '/introduction' ? 'active' : ''}`}>
-            <Link to="/introduction" onClick={() => handleLinkClick('/introduction', 'python')}>Introduction</Link>
-          </div>
-          <div className={`box ${activePath === '/variables' ? 'active' : ''}`}>
-            <Link to="/variables" onClick={() => handleLinkClick('/variables', 'python')}>Variables</Link>
-          </div>
+    switch (activeNav) {
+      case 'python':
+        return (
+          <>
+            <h4>Python Topics</h4>
+            <div className={`box ${activePath === '/introduction' ? 'active' : ''}`}>
+              <Link to="/introduction" onClick={() => handleLinkClick('/introduction', 'python')}>Introduction</Link>
+            </div>
+            <div className={`box ${activePath === '/variables' ? 'active' : ''}`}>
+              <Link to="/variables" onClick={() => handleLinkClick('/variables', 'python')}>Variables</Link>
+            </div>
           <div className={`box ${activePath === '/data-types' ? 'active' : ''}`}>
           <Link to="/data-types" onClick={() => handleLinkClick('/data-types','python')}>Data Types</Link>
         </div>
@@ -122,40 +118,38 @@ const Navbar = () => {
   <div className={`box ${activePath === '/context-managers' ? 'active' : ''}`}>
     <Link to="/context-managers" onClick={() => handleLinkClick('/context-managers','python')}>Context Managers</Link>
   </div>
-          {/* Add more Python links here */}
-        </>
-      );
-    } else if (activeNav === 'django') {
-      return (
-        <>
-          <h4>Django Topics</h4>
-          {/* Django sidebar links */}
-          <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
-            <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
-          </div>
-          <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
-            <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
-          </div>
-          {/* Add more Django links here */}
-        </>
-      );
-    } else if (activeNav === 'ml') {
-      return (
-        <>
-          <h4>ML Topics</h4>
-          {/* Django sidebar links */}
-          <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
-            <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
-          </div>
-          <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
-            <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
-          </div>
-          {/* Add more Django links here */}
-        </>
-      );
+            {/* Additional Python links */}
+          </>
+        );
+      case 'django':
+        return (
+          <>
+            <h4>Django Topics</h4>
+            <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
+              <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
+            </div>
+            <div className={`box ${activePath === '/django-getstarted' ? 'active' : ''}`}>
+              <Link to="/django-getstarted" onClick={() => handleLinkClick('/django-getstarted', 'django')}>Get Started</Link>
+            </div>
+            {/* Additional Django links */}
+          </>
+        );
+      case 'ml':
+        return (
+          <>
+            <h4>Machine Learning Topics</h4>
+            <div className={`box ${activePath === '/ml-intro' ? 'active' : ''}`}>
+              <Link to="/ml-intro" onClick={() => handleLinkClick('/ml-intro', 'ml')}>Introduction</Link>
+            </div>
+            <div className={`box ${activePath === '/ml-getstarted' ? 'active' : ''}`}>
+              <Link to="/ml-getstarted" onClick={() => handleLinkClick('/ml-getstarted', 'ml')}>Get Started</Link>
+            </div>
+            {/* Additional ML links */}
+          </>
+        );
+      default:
+        return null;
     }
-    // Add more conditions for other nav items if needed
-    return null;
   };
 
   return (
@@ -202,9 +196,13 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${activeNav === 'ml' ? 'active' : ''}`}
-              href="/pysolve/ml"
-              onClick={() => setActiveNav('ml')}>Machine Learning</a>
+              <a
+                className={`nav-link ${activeNav === 'ml' ? 'active' : ''}`}
+                href="/pysolve/ml"
+                onClick={() => setActiveNav('ml')}
+              >
+                Machine Learning
+              </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Contact</a>
@@ -220,6 +218,153 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { Link, useLocation } from 'react-router-dom';
+
+// const Navbar = () => {
+//   const location = useLocation(); // To get the current route
+//   const [activePath, setActivePath] = useState(location.pathname); // Set initial active path
+//   const [isSidebarVisible, setIsSidebarVisible] = useState(false); // State for sidebar visibility
+//   const [activeNav, setActiveNav] = useState(() => {
+//     // Retrieve the last selected nav from localStorage
+//     return localStorage.getItem('activeNav') || 'python';
+//   });
+
+//   // Update the active path when the route changes
+//   useEffect(() => {
+//     setActivePath(location.pathname);
+//   }, [location.pathname]);
+
+//   // Update localStorage whenever activeNav changes
+//   useEffect(() => {
+//     localStorage.setItem('activeNav', activeNav);
+//   }, [activeNav]);
+
+//   // Handle sidebar toggle
+//   const handleSidebarToggle = () => {
+//     setIsSidebarVisible(!isSidebarVisible); // Toggle sidebar visibility
+//   };
+
+//   // Handle active class toggle and close sidebar on link click
+//   const handleLinkClick = (path, nav) => {
+//     setActivePath(path);
+//     setIsSidebarVisible(false); // Close sidebar after link click
+//     setActiveNav(nav); // Set active navigation
+//   };
+//   // Render sidebar content based on the active navigation item
+//   const renderSidebarContent = () => {
+//     if (activeNav === 'python') {
+//       return (
+//         <>
+//           <h4>Python Topics</h4>
+//           {/* Python sidebar links */}
+//           <div className={`box ${activePath === '/introduction' ? 'active' : ''}`}>
+//             <Link to="/introduction" onClick={() => handleLinkClick('/introduction', 'python')}>Introduction</Link>
+//           </div>
+//           <div className={`box ${activePath === '/variables' ? 'active' : ''}`}>
+//             <Link to="/variables" onClick={() => handleLinkClick('/variables', 'python')}>Variables</Link>
+//           </div>
+//           {/* Add more Python links here */}
+//         </>
+//       );
+//     } else if (activeNav === 'django') {
+//       return (
+//         <>
+//           <h4>Django Topics</h4>
+//           {/* Django sidebar links */}
+//           <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
+//             <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
+//           </div>
+//           <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
+//             <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
+//           </div>
+//           {/* Add more Django links here */}
+//         </>
+//       );
+//     } else if (activeNav === 'ml') {
+//       return (
+//         <>
+//           <h4>ML Topics</h4>
+//           {/* Django sidebar links */}
+//           <div className={`box ${activePath === '/django-intro' ? 'active' : ''}`}>
+//             <Link to="/django-intro" onClick={() => handleLinkClick('/django-intro', 'django')}>Introduction</Link>
+//           </div>
+//           <div className={`box ${activePath === '/django-getstartred' ? 'active' : ''}`}>
+//             <Link to="/django-getstartred" onClick={() => handleLinkClick('/django-getstartred', 'django')}>Get Startred</Link>
+//           </div>
+//           {/* Add more Django links here */}
+//         </>
+//       );
+//     }
+//     // Add more conditions for other nav items if needed
+//     return null;
+//   };
+
+//   return (
+//     <>
+//       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+//         <a className="navbar-brand" href="/pysolve">PySolve</a>
+//         <button
+//           className="navbar-toggler"
+//           type="button"
+//           data-toggle="collapse"
+//           data-target="#navbarNav"
+//           aria-controls="navbarNav"
+//           aria-expanded="false"
+//           aria-label="Toggle navigation"
+//         >
+//           Stack
+//         </button>
+//         <button
+//           className="btn btn-light d-lg-none"
+//           id="sidebarToggle"
+//           aria-label="Toggle Sidebar"
+//           onClick={handleSidebarToggle}
+//         >
+//           Topics
+//         </button>
+//         <div className="collapse navbar-collapse" id="navbarNav">
+//           <ul className="navbar-nav ml-auto">
+//             <li className="nav-item">
+//               <a
+//                 className={`nav-link ${activeNav === 'python' ? 'active' : ''}`}
+//                 href="/pysolve/introduction"
+//                 onClick={() => setActiveNav('python')}
+//               >
+//                 Python
+//               </a>
+//             </li>
+//             <li className="nav-item">
+//               <a
+//                 className={`nav-link ${activeNav === 'django' ? 'active' : ''}`}
+//                 href="/pysolve/django-intro"
+//                 onClick={() => setActiveNav('django')}
+//               >
+//                 Django
+//               </a>
+//             </li>
+//             <li className="nav-item">
+//               <a className={`nav-link ${activeNav === 'ml' ? 'active' : ''}`}
+//               href="/pysolve/ml"
+//               onClick={() => setActiveNav('ml')}>Machine Learning</a>
+//             </li>
+//             <li className="nav-item">
+//               <a className="nav-link" href="#">Contact</a>
+//             </li>
+//           </ul>
+//         </div>
+//       </nav>
+//       <div className={`sidebar ${isSidebarVisible ? 'show' : ''}`}>
+//         {renderSidebarContent()}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Navbar;
 
 
 // import React, { useState, useEffect } from 'react';
